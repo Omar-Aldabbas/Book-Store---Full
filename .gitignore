@@ -10,4 +10,4 @@ Client/node_modules/
 Client/dist/
 Client/.angular/
 Client/.vscode/
-Client/.git/    # Don't track inner client git repo
+Client/.git/ 
