@@ -10,8 +10,11 @@ namespace Book_Store.Models
         [Required]
         public int BookId { get; set; }
 
+        public Book Book { get; set; }
+
         [Required]
         public int BookTypeId { get; set; }
+        public BookType BookType { get; set; }
 
         public string Description { get; set; }
 

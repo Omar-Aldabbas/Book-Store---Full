@@ -4,6 +4,7 @@ using Book_Store.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book_Store.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251222101743_RedefineRelations")]
+    partial class RedefineRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,7 +173,7 @@ namespace Book_Store.Migrations
             modelBuilder.Entity("Book_Store.Models.BookDetail", b =>
                 {
                     b.HasOne("Book_Store.Models.Book", "Book")
-                        .WithMany("BookDetails")
+                        .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -197,17 +200,12 @@ namespace Book_Store.Migrations
                     b.HasOne("Book_Store.Models.Genre", "Genre")
                         .WithMany("BookDetailGenres")
                         .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BookDetail");
 
                     b.Navigation("Genre");
-                });
-
-            modelBuilder.Entity("Book_Store.Models.Book", b =>
-                {
-                    b.Navigation("BookDetails");
                 });
 
             modelBuilder.Entity("Book_Store.Models.BookDetail", b =>

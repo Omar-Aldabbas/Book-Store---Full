@@ -10,6 +10,6 @@
 
         public string Language { get; set; }
 
-        public string ThumbnailUrl { get; set; }
+        public IFormFile Thumbnail { get; set; }
     }
 }

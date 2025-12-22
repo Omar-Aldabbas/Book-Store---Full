@@ -23,5 +23,8 @@ namespace Book_Store.Models
         //[RegularExpression(@"^(97(8|9))?\d{9}(\d|X)$", ErrorMessage = "Invalid ISBN format")] for real ISBN validation
         public string ISBN { get; set; } = "";
 
+        // like if each book edition has its won details
+        public ICollection<BookDetail> BookDetails { get; set; } = new List<BookDetail>();
+
     }
 }
