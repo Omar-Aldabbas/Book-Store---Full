@@ -1,0 +1,38 @@
+﻿using Book_Store.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace Book_Store.Data
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+        }
+
+        public DbSet<Book> Books { get; set; }
+        public DbSet<BookDetail> BookDetails { get; set; }
+        public DbSet<BookType> BookTypes { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<BookDetailGenre> BookDetailGenres { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+
+            modelBuilder.Entity<BookDetailGenre>()
+                .HasKey(bdg => new { bdg.BookDetailId, bdg.GenreId });
+
+            modelBuilder.Entity<BookDetailGenre>()
+                .HasOne(bdg => bdg.BookDetail)
+                .WithMany(bd => bd.BookDetailGenres)
+                .HasForeignKey(bdg => bdg.BookDetailId);
+
+            modelBuilder.Entity<BookDetailGenre>()
+                .HasOne(bdg => bdg.Genre)
+                .WithMany(g => g.BookDetailGenres)
+                .HasForeignKey(bdg => bdg.GenreId);
+        }
+
+    }
+}

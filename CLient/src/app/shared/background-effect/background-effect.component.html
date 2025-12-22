@@ -1,0 +1,17 @@
+<div
+  class="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none"
+>
+  <div
+    *ngFor="let c of circles"
+    class="absolute rounded-full opacity-30"
+    [ngStyle]="{
+      width: c.size,
+      height: c.size,
+      top: c.top,
+      left: c.left,
+      backgroundColor: c.color,
+      filter: 'blur(40px)',
+      animation: c.animation
+    }"
+  ></div>
+</div>

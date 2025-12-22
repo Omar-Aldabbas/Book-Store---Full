@@ -1,0 +1,12 @@
+<form #searchForm="ngForm" (ngSubmit)="submit()" class="flex justify-center w-full items-center relative mt-12">
+  <input
+    type="text"
+    name="query"
+    ngModel
+    placeholder="Explore our new collections"
+    class="w-[90vw] placeholder-gray-400 text-primary shadow-inner  md:w-[60vw] bg-gray-100 border border-2 border-gray-300 px-3 py-2 md:py-3 md:px-5 rounded-lg focus:border-0 focus:outline-2 focus:outline-primary"
+  />
+  <button class="relative transition-color duration-200 text-gray-300 hover:text-primary -left-8 -bottom-1 font-bold">
+    <span class="material-icons ">search</span>
+  </button>
+</form>

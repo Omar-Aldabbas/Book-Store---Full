@@ -1,0 +1,54 @@
+<div *ngIf="isMobile" class="py-4">
+  <p class="text-icon text-2xl font-semibold">
+    Welcome Back, <span class="font-bold text-primary">{{ user.name }}!</span>
+  </p>
+  <h1 class="text-3xl font-bold mt-2 ">What do you want to read today?</h1>
+</div>
+
+<div *ngIf="!isMobile" class="flex justify-between items-center py-8">
+  <div>
+    <p class="text-icon text-3xl font-semibold">
+      Welcome Back, <span class="font-bold text-primary">{{ user.name }}!</span>
+    </p>
+    <h1 class="text-4xl font-bold mt-2">What do you want to read today?</h1>
+    <p class="mt-4 text-lg text-gray-500 max-w-md">
+      Discover new stories, explore your favorite genres, and dive into a world
+      of imagination. From thrilling adventures to inspiring tales, we have the
+      perfect book waiting for you.
+    </p>
+    <a
+      href="/store"
+      class="border-2 relative top-6 border-secondary text-lg px-5 py-3 text-secondary font-semibold rounded transition-all duration-200 hover:bg-primary hover:border-primary hover:text-white"
+    >
+      Visit Store
+    </a>
+  </div>
+
+  <div class="relative flex space-x-[-2rem]">
+    <!-- <img
+      src="cover1.png"
+      alt="Cover 1"
+      class="w-32 h-48  transform transition-transform duration-300 hover:scale-105 z-30"
+    /> -->
+    <img
+      src="cover2.png"
+      alt="Cover 2"
+      class="w-52 h-80 transform transition-transform duration-300 hover:scale-105 z-20 -translate-y-6 -translate-x-4"
+    />
+    <img
+      src="cover3.png"
+      alt="Cover 3"
+      class="w-52 h-80 transform transition-transform duration-300 hover:scale-105 z-10 translate-y-6 -translate-x-8"
+    />
+    <img
+      src="cover4.png"
+      alt="Cover 4"
+      class="w-52 h-80 transform transition-transform duration-300 hover:scale-105 -translate-y-6 z-0 -translate-x-12"
+    />
+    <img
+      src="cover5.png"
+      alt="Cover 5"
+      class="w-52 h-80 transform transition-transform duration-300 hover:scale-105 translate-y-6 z-[-10] -translate-x-16"
+    />
+  </div>
+</div>
