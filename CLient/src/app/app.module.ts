@@ -25,6 +25,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FaqComponent } from './home/faq/faq.component';
+import { NewestComponent } from './home/newest/newest.component';
+import { AddBookFormComponent } from './home/add-book-form/add-book-form.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { FaqComponent } from './home/faq/faq.component';
     HeroComponent,
     SearchBarComponent,
     FaqComponent,
+    NewestComponent,
+    AddBookFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, BrowserAnimationsModule],
   providers: [

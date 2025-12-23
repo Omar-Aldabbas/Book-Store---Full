@@ -1,0 +1,18 @@
+<div class="max-w-sm mx-auto mt-8 p-6 bg-white rounded-2xl shadow-lg flex flex-col items-center">
+  <!-- Book Thumbnail -->
+  <img 
+    *ngIf="book.ThumbnailUrl" 
+    [src]="book.ThumbnailUrl" 
+    alt="{{ book.Title }}" 
+    class="w-40 h-56 object-cover rounded-lg shadow-md mb-4"
+  />
+
+  <!-- Book Info -->
+  <div class="text-center">
+    <h2 class="text-xl font-bold text-gray-800">{{ book.Title }}</h2>
+    <p class="text-gray-600 mt-1">{{ book.Author }}</p>
+    <p class="text-gray-500 text-sm mt-2">Genre: {{ book.MainGenre }}</p>
+    <p class="text-gray-500 text-sm">Language: {{ book.Language }}</p>
+    <p class="text-gray-400 text-xs mt-2">Added: {{ book.AddDate | date:'mediumDate' }}</p>
+  </div>
+</div>

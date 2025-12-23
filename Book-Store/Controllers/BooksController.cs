@@ -171,6 +171,30 @@ namespace Book_Store.Controllers
             return NoContent();
         }
 
+        [HttpGet("newest")]
+        public async Task<ActionResult<BookDto>> GetNewestBook()
+        {
+            var book = await _context.Books
+                .OrderByDescending(b => b.AddDate)
+                .FirstOrDefaultAsync();
+
+            if (book == null)
+                return NotFound();
+
+            var bookDto = new BookDto
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Author = book.Author,
+                AddDate = book.AddDate,
+                MainGenre = book.MainGenre,
+                Language = book.Language,
+                ThumbnailUrl = book.ThumbnailUrl
+            };
+
+            return Ok(bookDto);
+        }
+
         private bool BookExists(int id)
         {
             return _context.Books.Any(e => e.Id == id);

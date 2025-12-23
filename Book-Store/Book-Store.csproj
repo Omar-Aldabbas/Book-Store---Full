@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Dtos\Users\" />
+    <Folder Include="wwwroot\files\books\" />
     <Folder Include="wwwroot\images\books\" />
     <Folder Include="wwwroot\images\users\" />
   </ItemGroup>
