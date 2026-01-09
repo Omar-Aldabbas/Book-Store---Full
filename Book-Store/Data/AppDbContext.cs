@@ -15,6 +15,8 @@ namespace Book_Store.Data
         public DbSet<Genre> Genres { get; set; }
         public DbSet<BookDetailGenre> BookDetailGenres { get; set; }
 
+        public DbSet<Language> Languages { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
