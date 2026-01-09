@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Book } from '../../models/book.model';
 import { genreStateService } from '../../state/genre.state.service';
 import { Genre } from '../../models/genre.model';
+import { Language } from '../../models/language.model';
+import { LangguageStateService } from '../../state/language.state.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-book-form',
@@ -21,8 +24,14 @@ export class AddBookFormComponent implements OnInit {
   };
 
   genres: Genre[] = [];
+  languages: Language[] = [];
 
-  constructor(private genreState: genreStateService) {}
+  @ViewChild('bookForm') bookForm!: NgForm;
+
+  constructor(
+    private genreState: genreStateService,
+    private languageState: LangguageStateService
+  ) {}
 
   ngOnInit(): void {
     this.genreState.loadGenres();
@@ -30,5 +39,18 @@ export class AddBookFormComponent implements OnInit {
     this.genreState.genres$.subscribe({
       next: (data) => (this.genres = data),
     });
+
+    this.languageState.loadLanguages();
+
+    this.languageState.languages$.subscribe({
+      next: (data) => (this.languages = data),
+    });
+  }
+
+  onSubmit(bookForm: NgForm) {
+    if (bookForm.valid) {
+      console.log(this.book);
+      bookForm.reset();
+    }
   }
 }

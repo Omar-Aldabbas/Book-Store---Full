@@ -1,4 +1,4 @@
-<form #bookForm="ngForm">
+<form #bookForm="ngForm" (ngSubmit)="onSubmit(bookForm)">
   <div>
     <label for="title"> Book Title </label>
     <input
@@ -62,8 +62,7 @@
       >
     </div>
   </div>
-  
-  
+
   <div>
     <label for="isbn"> ISBN </label>
     <input
@@ -75,9 +74,7 @@
       required
     />
     <div>
-      <span *ngIf="isbn.invalid && isbn.touched"
-        >ISBN is required!</span
-      >
+      <span *ngIf="isbn.invalid && isbn.touched">ISBN is required!</span>
     </div>
   </div>
 
@@ -105,8 +102,7 @@
     </div>
   </div>
 
-
-    <div>
+  <div>
     <label for="language"> Book's Language</label>
 
     <select
@@ -118,15 +114,30 @@
     >
       <option
         *ngFor="let language of languages; track: language.Id"
-        [value]="language.GenreName"
+        [value]="language.LanguageName"
       >
-        {{ language.GenreName }}
+        {{ language.LanguageName }}
       </option>
     </select>
     <div>
       <span *ngIf="language.invalid && language.touched"
         >language should be selected</span
       >
+    </div>
+  </div>
+
+    <div>
+    <label for="bookCover"> Book Cover </label>
+    <input
+      id="bookCover"
+      type="text"
+      name="bookCover"
+      [(ngModel)]="book.ThumbnailUrl"
+      #bookCover="ngModel"
+      required
+    />
+    <div>
+      <span *ngIf="bookCover.invalid && bookCover.touched">Book Cover Image is required!</span>
     </div>
   </div>
 </form>
