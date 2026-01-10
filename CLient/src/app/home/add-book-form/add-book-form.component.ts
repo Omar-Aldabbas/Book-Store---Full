@@ -39,12 +39,15 @@ export class AddBookFormComponent implements OnInit {
     this.genreState.genres$.subscribe({
       next: (data) => (this.genres = data),
     });
-
+    console.log(this.genres)
     this.languageState.loadLanguages();
 
     this.languageState.languages$.subscribe({
       next: (data) => (this.languages = data),
     });
+
+    console.log(this.languages)
+
   }
 
   onSubmit(bookForm: NgForm) {

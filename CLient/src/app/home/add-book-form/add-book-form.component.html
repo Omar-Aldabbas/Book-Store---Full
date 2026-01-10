@@ -89,8 +89,8 @@
       required
     >
       <option
-        *ngFor="let genre of genres; track: genre.id"
-        [value]="genre.genreName"
+        *ngFor="let genre of genres"
+        [value]="genre.id"
       >
         {{ genre.genreName }}
       </option>
