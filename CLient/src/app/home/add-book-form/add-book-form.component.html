@@ -89,10 +89,10 @@
       required
     >
       <option
-        *ngFor="let genre of genres; track: genre.Id"
-        [value]="genre.GenreName"
+        *ngFor="let genre of genres; track: genre.id"
+        [value]="genre.genreName"
       >
-        {{ genre.GenreName }}
+        {{ genre.genreName }}
       </option>
     </select>
     <div>
@@ -140,4 +140,6 @@
       <span *ngIf="bookCover.invalid && bookCover.touched">Book Cover Image is required!</span>
     </div>
   </div>
+
+  <button type="submit">Submit</button>
 </form>

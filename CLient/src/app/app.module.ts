@@ -27,6 +27,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FaqComponent } from './home/faq/faq.component';
 import { NewestComponent } from './home/newest/newest.component';
 import { AddBookFormComponent } from './home/add-book-form/add-book-form.component';
+import { genreStateService } from './state/genre.state.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,7 @@ import { AddBookFormComponent } from './home/add-book-form/add-book-form.compone
     NewestComponent,
     AddBookFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, BrowserAnimationsModule, HttpClientModule],
   providers: [
     provideAnimationsAsync()
   ],

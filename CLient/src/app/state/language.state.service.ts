@@ -3,7 +3,7 @@ import { BehaviorSubject } from "rxjs";
 import { Language } from "../models/language.model";
 import { LanguageService } from "../services/language.service";
 
-Injectable({providedIn: "root"})
+@Injectable({providedIn: "root"})
 export class LangguageStateService{
 
 

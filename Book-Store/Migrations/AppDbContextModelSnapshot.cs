@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.OpenApi;
+using Book_Store.Models;
 
 #nullable disable
 
@@ -239,4 +242,57 @@ namespace Book_Store.Migrations
 #pragma warning restore 612, 618
         }
     }
-}
+
+
+public static class LanguageEndpoints
+{
+	public static void MapLanguageEndpoints (this IEndpointRouteBuilder routes)
+    {
+        var group = routes.MapGroup("/api/Language").WithTags(nameof(Language));
+
+        group.MapGet("/", async (AppDbContext db) =>
+        {
+            return await db.Languages.ToListAsync();
+        })
+        .WithName("GetAllLanguages");
+
+        group.MapGet("/{id}", async Task<Results<Ok<Language>, NotFound>> (int id, AppDbContext db) =>
+        {
+            return await db.Languages.AsNoTracking()
+                .FirstOrDefaultAsync(model => model.Id == id)
+                is Language model
+                    ? TypedResults.Ok(model)
+                    : TypedResults.NotFound();
+        })
+        .WithName("GetLanguageById");
+
+        group.MapPut("/{id}", async Task<Results<Ok, NotFound>> (int id, Language language, AppDbContext db) =>
+        {
+            var affected = await db.Languages
+                .Where(model => model.Id == id)
+                .ExecuteUpdateAsync(setters => setters
+                  .SetProperty(m => m.Id, language.Id)
+                  .SetProperty(m => m.LanguageName, language.LanguageName)
+                  );
+            return affected == 1 ? TypedResults.Ok() : TypedResults.NotFound();
+        })
+        .WithName("UpdateLanguage");
+
+        group.MapPost("/", async (Language language, AppDbContext db) =>
+        {
+            db.Languages.Add(language);
+            await db.SaveChangesAsync();
+            return TypedResults.Created($"/api/Language/{language.Id}",language);
+        })
+        .WithName("CreateLanguage");
+
+        group.MapDelete("/{id}", async Task<Results<Ok, NotFound>> (int id, AppDbContext db) =>
+        {
+            var affected = await db.Languages
+                .Where(model => model.Id == id)
+                .ExecuteDeleteAsync();
+            return affected == 1 ? TypedResults.Ok() : TypedResults.NotFound();
+        })
+        .WithName("DeleteLanguage");
+    }
+}}

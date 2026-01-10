@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Language } from '../models/language.model';
 
-Injectable({
+@Injectable({
   providedIn: 'root',
-});
+})
 export class LanguageService {
   constructor(private http: HttpClient) {}
 

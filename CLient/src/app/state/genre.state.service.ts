@@ -3,9 +3,9 @@ import { genreService } from '../services/genre.service';
 import { Genre } from '../models/genre.model';
 import { BehaviorSubject } from 'rxjs';
 
-Injectable({
+@Injectable({
   providedIn: 'root',
-});
+})
 export class genreStateService {
   private genresubject = new BehaviorSubject<Genre[]>([]);
   genres$ = this.genresubject.asObservable();
