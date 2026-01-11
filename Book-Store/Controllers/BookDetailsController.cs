@@ -35,13 +35,6 @@ namespace Book_Store.Controllers
             var dtoList = books.Select(d => new BookDetailsDto
             {
                 Id = d.Id,
-                Title = d.Book.Title,
-                Author = d.Book.Author,
-                AddDate = d.Book.AddDate,
-                MainGenre = d.Book.MainGenre,
-                Language = d.Book.Language,
-                BookTypeName = d.BookType.TypeName,
-                ThumbnailUrl = d.Book.ThumbnailUrl,
                 Description = d.Description,
                 ReleasedBy = d.ReleasedBy,
                 ReleasedAt = d.ReleasedAt,
@@ -51,7 +44,7 @@ namespace Book_Store.Controllers
                 StockStatus = d.StockStatus,
                 Stock = d.Stock,
                 FileUrl = d.FileUrl,
-                Genres = d.BookDetailGenres.Select(bg => bg.Genre.GenreName).ToList()
+                GenreIds = d.BookDetailGenres.Select(bg => bg.Genre.GenreName).ToList()
             }).ToList();
 
             return Ok(dtoList);

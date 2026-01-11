@@ -40,5 +40,6 @@ namespace Book_Store.Models
 
         public ICollection<BookDetailGenre> BookDetailGenres { get; set; } = new List<BookDetailGenre>();
 
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Book_Store.Models
 {
@@ -15,7 +16,9 @@ namespace Book_Store.Models
 
         public string MainGenre { get; set; } = "General";
 
-        public string Language { get; set; } = "English";
+        [ForeignKey("Language")]
+        [Required]
+        public int LanguageId { get; set; }
 
         public string ThumbnailUrl { get; set; } = "";
 
@@ -24,7 +27,9 @@ namespace Book_Store.Models
         public string ISBN { get; set; } = "";
 
         // like if each book edition has its won details
-        public ICollection<BookDetail> BookDetails { get; set; } = new List<BookDetail>();
+        public BookDetail BookDetails { get; set; }
 
-    }
+        public Language Language { get; set; }
+
+        }
 }

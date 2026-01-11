@@ -8,7 +8,7 @@
 
         public string MainGenre { get; set; }
 
-        public string Language { get; set; }
+        public int LanguageId { get; set; }
 
         public IFormFile Thumbnail { get; set; }
     }

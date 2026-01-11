@@ -9,5 +9,7 @@ namespace Book_Store.Models
 
         [Required]
         public string LanguageName { get; set; }
+
+        public ICollection<Book> Books { get; set; } = new List<Book>();
     }
 }

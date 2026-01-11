@@ -21,6 +21,12 @@ namespace Book_Store.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Book>()
+                .HasOne(b => b.Language)
+                .WithMany(l => l.Books)
+                .HasForeignKey(b => b.LanguageId);
+
+
 
             modelBuilder.Entity<BookDetailGenre>()
                 .HasKey(bdg => new { bdg.BookDetailId, bdg.GenreId });
@@ -37,10 +43,11 @@ namespace Book_Store.Data
                 .HasForeignKey(bdg => bdg.GenreId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
             modelBuilder.Entity<Book>()
-                .HasMany(b => b.BookDetails)
+                .HasOne(b => b.BookDetails)
                 .WithOne(d => d.Book)
-                .HasForeignKey(d => d.BookId)
+                .HasForeignKey<BookDetail>(d => d.BookId)
                 .OnDelete(DeleteBehavior.Cascade);
 
         }
