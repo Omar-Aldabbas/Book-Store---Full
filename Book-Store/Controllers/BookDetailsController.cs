@@ -44,7 +44,7 @@ namespace Book_Store.Controllers
                 StockStatus = d.StockStatus,
                 Stock = d.Stock,
                 FileUrl = d.FileUrl,
-                GenreIds = d.BookDetailGenres.Select(bg => bg.Genre.GenreName).ToList()
+                GenreIds = d.BookDetailGenres.Select(bg => bg.Genre.Id).ToList()
             }).ToList();
 
             return Ok(dtoList);
@@ -67,13 +67,6 @@ namespace Book_Store.Controllers
             var dtoBook = new BookDetailsDto
             {
                 Id = bookDetail.Id,
-                Title = bookDetail.Book.Title,
-                Author = bookDetail.Book.Author,
-                AddDate = bookDetail.Book.AddDate,
-                MainGenre = bookDetail.Book.MainGenre,
-                Language = bookDetail.Book.Language,
-                ThumbnailUrl = bookDetail.Book.ThumbnailUrl,
-                BookTypeName = bookDetail.BookType.TypeName,
                 Description = bookDetail.Description,
                 ReleasedBy = bookDetail.ReleasedBy,
                 ReleasedAt = bookDetail.ReleasedAt,
@@ -83,7 +76,8 @@ namespace Book_Store.Controllers
                 StockStatus = bookDetail.StockStatus,
                 Stock = bookDetail.Stock,
                 FileUrl = bookDetail.FileUrl,
-                Genres = bookDetail.BookDetailGenres.Select(bg => bg.Genre.GenreName).ToList()
+                GenreIds = bookDetail.BookDetailGenres.Select(bg => bg.Genre.Id).ToList()
+                
             };
 
             return Ok(dtoBook);
@@ -148,13 +142,6 @@ namespace Book_Store.Controllers
             var updatedDto = new BookDetailsDto
             {
                 Id = bookDetail.Id,
-                Title = bookDetail.Book.Title,
-                Author = bookDetail.Book.Author,
-                AddDate = bookDetail.Book.AddDate,
-                MainGenre = bookDetail.Book.MainGenre,
-                Language = bookDetail.Book.Language,
-                ThumbnailUrl = bookDetail.Book.ThumbnailUrl,
-                BookTypeName = bookDetail.BookType.TypeName,
                 Description = bookDetail.Description,
                 ReleasedBy = bookDetail.ReleasedBy,
                 ReleasedAt = bookDetail.ReleasedAt,
@@ -164,7 +151,7 @@ namespace Book_Store.Controllers
                 StockStatus = bookDetail.StockStatus,
                 Stock = bookDetail.Stock,
                 FileUrl = bookDetail.FileUrl,
-                Genres = bookDetail.BookDetailGenres.Select(bg => bg.Genre.GenreName).ToList()
+                GenreIds = bookDetail.BookDetailGenres.Select(bg => bg.Genre.Id).ToList()
             };
 
             return Ok(updatedDto);
@@ -214,13 +201,6 @@ namespace Book_Store.Controllers
             var dtoBook = new BookDetailsDto
             {
                 Id = bookDetail.Id,
-                Title = bookDetail.Book?.Title ?? "Unknown",
-                Author = bookDetail.Book?.Author ?? "Unknown",
-                AddDate = bookDetail.Book?.AddDate ?? DateTime.UtcNow,
-                MainGenre = bookDetail.Book?.MainGenre ?? "General",
-                Language = bookDetail.Book?.Language ?? "English",
-                ThumbnailUrl = bookDetail.Book?.ThumbnailUrl ?? "",
-                BookTypeName = bookDetail.BookType?.TypeName ?? "Unknown",
                 Description = bookDetail.Description,
                 ReleasedBy = bookDetail.ReleasedBy,
                 ReleasedAt = bookDetail.ReleasedAt,
@@ -230,7 +210,7 @@ namespace Book_Store.Controllers
                 StockStatus = bookDetail.StockStatus,
                 Stock = bookDetail.Stock,
                 FileUrl = bookDetail.FileUrl,
-                Genres = bookDetail.BookDetailGenres.Select(bg => bg.Genre.GenreName).ToList()
+                GenreIds = bookDetail.BookDetailGenres.Select(bg => bg.Genre.Id).ToList()
             };
 
             return CreatedAtAction(nameof(GetBookDetail), new { id = bookDetail.Id }, dtoBook);

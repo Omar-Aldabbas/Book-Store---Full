@@ -35,7 +35,7 @@ namespace Book_Store.Controllers
                     Author = b.Author,
                     AddDate = b.AddDate,
                     MainGenre = b.MainGenre,
-                    Language = b.Language,
+                    LanguageId = b.LanguageId,
                     ThumbnailUrl = b.ThumbnailUrl
                 })
                 .ToListAsync();
@@ -58,7 +58,7 @@ namespace Book_Store.Controllers
                 Author = book.Author,
                 AddDate = book.AddDate,
                 MainGenre = book.MainGenre,
-                Language = book.Language,
+                LanguageId = book.LanguageId,
                 ThumbnailUrl = book.ThumbnailUrl
             };
 
@@ -87,7 +87,7 @@ namespace Book_Store.Controllers
             book.Title = dto.Title;
             book.Author = dto.Author;
             book.MainGenre = dto.MainGenre;
-            book.Language = dto.Language;
+            book.LanguageId = dto.LanguageId;
 
             try
             {
@@ -107,7 +107,7 @@ namespace Book_Store.Controllers
                 Title = book.Title,
                 Author = book.Author,
                 MainGenre = book.MainGenre,
-                Language = book.Language,
+                LanguageId = book.LanguageId,
                 ThumbnailUrl = book.ThumbnailUrl,
                 AddDate = book.AddDate
             };
@@ -131,7 +131,7 @@ namespace Book_Store.Controllers
                 Title = dto.Title,
                 Author = dto.Author,
                 MainGenre = dto.MainGenre,
-                Language = dto.Language,
+                LanguageId = dto.LanguageId,
                 ThumbnailUrl = thumbnailUrl
             };
 
@@ -145,7 +145,7 @@ namespace Book_Store.Controllers
                 Author = book.Author,
                 AddDate = book.AddDate,
                 MainGenre = book.MainGenre,
-                Language = book.Language,
+                LanguageId = book.LanguageId,
                 ThumbnailUrl = book.ThumbnailUrl
             };
 
@@ -188,7 +188,7 @@ namespace Book_Store.Controllers
                 Author = book.Author,
                 AddDate = book.AddDate,
                 MainGenre = book.MainGenre,
-                Language = book.Language,
+                LanguageId = book.LanguageId,
                 ThumbnailUrl = book.ThumbnailUrl
             };
 
