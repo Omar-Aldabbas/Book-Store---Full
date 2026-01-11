@@ -29,6 +29,7 @@ import { NewestComponent } from './home/newest/newest.component';
 import { AddBookFormComponent } from './home/add-book-form/add-book-form.component';
 import { genreStateService } from './state/genre.state.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthorSectionComponent } from './home/author-section/author-section.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { HttpClientModule } from '@angular/common/http';
     FaqComponent,
     NewestComponent,
     AddBookFormComponent,
+    AuthorSectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, BrowserAnimationsModule, HttpClientModule],
   providers: [
